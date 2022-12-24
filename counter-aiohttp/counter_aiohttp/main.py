@@ -25,8 +25,12 @@ async def hook_handler(request: Request):
     # await asyncio.sleep(3)
 
     logger.info(f'curr count: {cur_count}')
-    return web.Response(text=f'OK {cur_count}', content_type='text/html')
+    return web.Response(text=f'OK {cur_count}', content_type='text/plain')
 
+async def hook_sleep_handler(request: Request):
+    await asyncio.sleep(3)
+
+    return await hook_handler(request)
 
 async def init_redis(app):
     app['redis'] = connection = redis.Redis()
@@ -43,6 +47,7 @@ async def init():
 
     app = web.Application()
     app.router.add_post('/hook', hook_handler)
+    app.router.add_post('/hook/sleep', hook_sleep_handler)
     app.router.add_post('/health', health)
     #redis = await setup_redis(app, conf)
 

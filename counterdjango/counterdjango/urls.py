@@ -16,11 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from counterapp.views import RedisHook, SQLiteHook, MySQLHook
+from counterapp.views import RedisHook, SQLiteHook, MySQLHook, RedisSleepHook
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hook', RedisHook.as_view(), name='hook'),
+    path('hook/sleep', RedisSleepHook.as_view(), name='hooksleep'),
     path('hooksqlite', SQLiteHook.as_view(), name='hooksqlite'),
     path('hookmysql', MySQLHook.as_view(), name='hookmysql'),
 ]

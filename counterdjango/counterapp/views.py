@@ -36,6 +36,13 @@ class RedisHook(View):
 
 
 @method_decorator(csrf_exempt, name='dispatch')
+class RedisSleepHook(View):
+    def post(self, request):
+        sleep(3)
+        return RedisHook.as_view()(self.request)
+
+
+@method_decorator(csrf_exempt, name='dispatch')
 class SQLiteHook(View):
     @transaction.atomic
     def post(self, request):
