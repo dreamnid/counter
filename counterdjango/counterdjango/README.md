@@ -1,6 +1,7 @@
 Instructions
 ---
-(Optional) Create a empty `settings_overrides.py` to override any settings (e.g. DATABASES)
+(Optional) Create a empty `settings_overrides.py` to override any settings (e.g. the mysql key in 
+the DATABASES setting)
 
 Be sure to have a `counter_local` database in your MySQL server!
 Then run migrations: `poetry run ./manage.py migrate`
