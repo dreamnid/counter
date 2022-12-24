@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "counter-aiohttp"
+version = "0.1.0"
+description = ""
+authors = ["Giovanni Go <giovanni@jamcity.com>"]
+readme = "README.md"
+packages = [{include = "counter_aiohttp"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+aiohttp-debugtoolbar = "^0.6.0"
+aiohttp-devtools = "^1.0.post0"
+redis = {extras = ["hiredis"], version = "^4.4.0"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
